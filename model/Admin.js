@@ -14,6 +14,10 @@ const AdminSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    new_password:{
+        type:String,
+        required:false
+    },
     super_admin:{
         type:Boolean,
         required:true
