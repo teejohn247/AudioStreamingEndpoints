@@ -8,8 +8,6 @@ import connectDb from './config/db';
 import userRouter from './routes/user';
 import path from 'path';
 
-const pug = require('pug');
-
 
 
 const app = express();
