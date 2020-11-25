@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const AdminSchema = new mongoose.Schema({
+const OrdinaryAdminSchema = new mongoose.Schema({
     name:{
         type:String,
         required:true
@@ -17,11 +17,7 @@ const AdminSchema = new mongoose.Schema({
         type:String,
         required:false
     },
-    super_admin:{
-        type:Boolean,
-        required:true
-    },
 });
 
-const Admin = mongoose.model("superAdmin", AdminSchema);
-export default Admin;
+const OrdinaryAdmin = mongoose.model("admin", OrdinaryAdminSchema);
+export default OrdinaryAdmin;
