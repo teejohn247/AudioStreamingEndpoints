@@ -14,7 +14,7 @@ const AdminSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    role_id:{
+    super_admin:{
         type:Boolean,
         required:true
     },
