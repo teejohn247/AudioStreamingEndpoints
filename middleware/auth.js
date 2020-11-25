@@ -12,8 +12,8 @@ const auth = (req, res, next) => {
     const options = { expiresIn: '1d' };
 
     req.payload = jwt.verify(header, process.env.SECRET_KEY, options);
-    next();
     console.log(req.payload);
+    next();
   } catch (error) {
     return res.status(401).json({ status: 401, error: 'Invalid token!' });
   }
