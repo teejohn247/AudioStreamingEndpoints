@@ -16,7 +16,7 @@ const router = express.Router();
 router.post('/super_admin/signup', superAdmin);
 router.post('/super_admin/login', superAdminLogin);
 router.post('/admin/signup', [auth, adminAuth], admin);
-router.post('/admin/login', [auth, adminAuth], adminLogin);
+router.post('/admin/login', adminLogin);
 router.patch('/super_admin/change_password', auth, changePassword);
 
 
