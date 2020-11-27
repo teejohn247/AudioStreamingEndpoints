@@ -13,6 +13,10 @@ const OrdinaryAdminSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    phone_number:{
+        type:String,
+        required:true
+    },
     new_password:{
         type:String,
         required:false

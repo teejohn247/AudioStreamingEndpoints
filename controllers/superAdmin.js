@@ -7,7 +7,7 @@ dotenv.config();
 
 const admin = async (req, res) => {
     try{ 
-        const {name, email, password, super_admin} = req.body;
+        const {name, email, password, phone_number, super_admin} = req.body;
         console.log(req.body.name);
         console.log(email);
         console.log(password);
@@ -30,6 +30,7 @@ const admin = async (req, res) => {
         admin = new Admin({
             name: req.body.name,
             email: req.body.email,
+            phone_number: req.body.phone_number,
             super_admin: req.body.super_admin,
             password: hashed
         });
