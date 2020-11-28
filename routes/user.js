@@ -13,6 +13,8 @@ import tags from '../controllers/updateTag';
 import viewTags from '../controllers/viewTags';
 import delTags from '../controllers/delTags';
 import filterTags from '../controllers/filterTags';
+import filterAdmin from '../controllers/filterAdmins';
+
 
 
 
@@ -41,7 +43,8 @@ router.post('/admin/create_tags', [auth, adminAuth], create_tags);
 router.patch('/admin/update_tags/:_id', [auth, adminAuth], tags);
 router.get('/admin/view_tags/:page/:limit', [auth, adminAuth], viewTags);
 router.get('/admin/view_admin/:page/:limit', [auth, adminAuth], viewAdmin);
-router.get('/admin/filter_tags', [auth, adminAuth], viewAdmin);
+router.get('/admin/filter_tags', [auth, adminAuth], filterTags);
+router.get('/admin/filter_admin', [auth, adminAuth], filterAdmin);
 router.delete('/admin/delete_tag/:id', [auth, adminAuth], delTags);
 
 

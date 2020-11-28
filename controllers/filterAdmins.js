@@ -1,29 +1,33 @@
-import Tags from '../model/Tags';
+import Admin from '../model/OrdinaryAdmin';
 
 
-const filterTags = async(req, res) => {
+
+const filterAdmins = async(req, res) => {
     try{
-        let { tag_name, tag_color} = req.body;
+       
+        let {name, email, phone_number} = req.body;
 
     
         console.log('here')
-        console.log(tag_name)
+        console.log(name)
 
         var filter = {};
 
 
-        if(tag_name){
-            filter.tag_name = tag_name;
+        if(name){
+            filter.name = name;
         };
-        
-        if(tag_color){
-            filter.tag_color = tag_color;
+        if(email){
+            filter.email = email;
+        };
+        if(phone_number){
+            filter.phone_number = phone_number;
         };
 
        
 
         
-       const records = await Tags.find(filter)
+       const records = await Admin.find(filter)
         // .limit(limit * 1)
         // .skip((page - 1) * limit)
         // .exec();
@@ -54,4 +58,4 @@ const filterTags = async(req, res) => {
             })
         }
 }
-export default filterTags;
+export default filterAdmins;
