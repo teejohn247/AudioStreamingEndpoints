@@ -10,6 +10,8 @@ import viewSingleAdmin from '../controllers/viewSingleAdmin';
 import deleteAdmin from '../controllers/delAdmin';
 import create_tags from '../controllers/tags';
 import tags from '../controllers/updateTag';
+import viewTags from '../controllers/viewTags';
+
 
 
 
@@ -33,6 +35,7 @@ router.get('/admin/view/:id', auth, viewSingleAdmin);
 router.delete('/admin/delete/:id', [auth, adminAuth], deleteAdmin);
 router.post('/admin/create_tags', [auth, adminAuth], create_tags);
 router.patch('/admin/update_tags/:_id', [auth, adminAuth], tags);
+router.get('/admin/view_tags', [auth, adminAuth], viewTags);
 router.get('/admin/view_admin/:page/:limit', [auth, adminAuth], viewAdmin);
 
 
