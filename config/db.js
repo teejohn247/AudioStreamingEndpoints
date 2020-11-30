@@ -13,5 +13,5 @@ const url = "mongodb://teejohn247:Wisdom123.@cluster0-shard-00-00.f53iq.mongodb.
          console.error(err.message);
          process.exit(1);
      }
-}
+    }
   export default connectDB;
