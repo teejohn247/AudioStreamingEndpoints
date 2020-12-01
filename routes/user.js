@@ -39,6 +39,7 @@ import auth from '../middleware/auth';
 
 import adminAuth from '../middleware/adminAuth';
 import delFile from '../controllers/delFile';
+import editFile from '../controllers/editFile';
 
 
 const router = express.Router();
@@ -73,8 +74,6 @@ const storage = new GridFsStorage({
   const upload = multer({ storage });
 
 
-
-
 router.post('/upload_file', upload.any(), details)
 router.post('/super_admin/signup', superAdmin);
 router.post('/super_admin/login', superAdminLogin);
@@ -95,9 +94,8 @@ router.delete('/admin/delete_file/:file_id', [auth, adminAuth], delFile);
 router.get('/file/:filename', getAudio);
 router.get('/all_files/:page/:limit', getAll);
 router.get('/view_file/:id', viewSingleFile);
-router.delete('/del_file/:file_id', delFile);
-
-
+router.get('/view_file/:id', viewSingleFile);
+router.patch('/edit_file/:file_id', editFile);
 
 
 export default router;
