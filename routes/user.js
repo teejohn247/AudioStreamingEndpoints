@@ -15,6 +15,7 @@ import delTags from '../controllers/delTags';
 import filterTags from '../controllers/filterTags';
 import filterAdmin from '../controllers/filterAdmins';
 import details from '../controllers/saveDes';
+import getAudio from '../controllers/getAudio';
 import GridFsStorage from 'multer-gridfs-storage';
 import multer from 'multer';
 import crypto from 'crypto';
@@ -84,6 +85,8 @@ router.get('/admin/view_admin/:page/:limit', [auth, adminAuth], viewAdmin);
 router.get('/admin/filter_tags', [auth, adminAuth], filterTags);
 router.get('/admin/filter_admin', [auth, adminAuth], filterAdmin);
 router.delete('/admin/delete_tag/:id', [auth, adminAuth], delTags);
+router.get('/file/:filename', getAudio);
+
 
 
 
