@@ -37,7 +37,7 @@ const details = async (req, res) => {
             err:'server error'
         })
     }
-  }
+}
   
 export default details;
   

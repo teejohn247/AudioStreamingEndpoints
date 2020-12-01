@@ -34,10 +34,11 @@ import viewSingleFile from '../controllers/viewSingleFile';
 
 
 
+
 import auth from '../middleware/auth';
 
 import adminAuth from '../middleware/adminAuth';
-import listAllUploads from '../controllers/listAllUploads';
+import delFile from '../controllers/delFile';
 
 
 const router = express.Router();
@@ -90,9 +91,12 @@ router.get('/admin/view_admin/:page/:limit', [auth, adminAuth], viewAdmin);
 router.get('/admin/filter_tags', [auth, adminAuth], filterTags);
 router.get('/admin/filter_admin', [auth, adminAuth], filterAdmin);
 router.delete('/admin/delete_tag/:id', [auth, adminAuth], delTags);
+router.delete('/admin/delete_file/:file_id', [auth, adminAuth], delFile);
 router.get('/file/:filename', getAudio);
-router.get('/all_files/:page/:limit', listAllUploads);
+router.get('/all_files/:page/:limit', getAll);
 router.get('/view_file/:id', viewSingleFile);
+router.delete('/del_file/:file_id', delFile);
+
 
 
 
