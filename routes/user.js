@@ -1,4 +1,8 @@
 import express from 'express';
+import GridFsStorage from 'multer-gridfs-storage';
+import multer from 'multer';
+import crypto from 'crypto';
+import path from 'path';
 import superAdmin from '../controllers/superAdmin';
 import superAdminLogin from '../controllers/superAdminLogin';
 import changePassword from '../controllers/changePassword';
@@ -16,10 +20,9 @@ import filterTags from '../controllers/filterTags';
 import filterAdmin from '../controllers/filterAdmins';
 import details from '../controllers/saveDes';
 import getAudio from '../controllers/getAudio';
-import GridFsStorage from 'multer-gridfs-storage';
-import multer from 'multer';
-import crypto from 'crypto';
-import path from 'path';
+import getAll from '../controllers/listAllUploads';
+
+
 
 
 
@@ -33,6 +36,7 @@ import path from 'path';
 import auth from '../middleware/auth';
 
 import adminAuth from '../middleware/adminAuth';
+import listAllUploads from '../controllers/listAllUploads';
 
 
 const router = express.Router();
@@ -86,6 +90,8 @@ router.get('/admin/filter_tags', [auth, adminAuth], filterTags);
 router.get('/admin/filter_admin', [auth, adminAuth], filterAdmin);
 router.delete('/admin/delete_tag/:id', [auth, adminAuth], delTags);
 router.get('/file/:filename', getAudio);
+router.get('/all_files/:page/:limit', listAllUploads);
+
 
 
 
