@@ -1,7 +1,8 @@
-import Details from '../model/Details';
 import mongoose from 'mongoose';
+import Grid from 'gridfs-stream';
+
 const mongoURI = "mongodb://teejohn247:Wisdom123.@cluster0-shard-00-00.f53iq.mongodb.net:27017,cluster0-shard-00-01.f53iq.mongodb.net:27017,cluster0-shard-00-02.f53iq.mongodb.net:27017/audio?ssl=true&replicaSet=atlas-tu9bmp-shard-0&authSource=admin&retryWrites=true&w=majority"
-import Grid from 'gridfs-stream'
+
 
 
 mongoose.connect(mongoURI);
@@ -34,7 +35,7 @@ const getAudio = async (req, res) => {
         return readstream.pipe(res);
        
     })
-    
+
     }catch(err){
         res.status(500).json({
             status:500,
