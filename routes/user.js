@@ -21,6 +21,7 @@ import filterAdmin from '../controllers/filterAdmins';
 import details from '../controllers/saveDes';
 import getAudio from '../controllers/getAudio';
 import getAll from '../controllers/listAllUploads';
+import viewSingleFile from '../controllers/viewSingleFile';
 
 
 
@@ -91,11 +92,7 @@ router.get('/admin/filter_admin', [auth, adminAuth], filterAdmin);
 router.delete('/admin/delete_tag/:id', [auth, adminAuth], delTags);
 router.get('/file/:filename', getAudio);
 router.get('/all_files/:page/:limit', listAllUploads);
-
-
-
-
-
+router.get('/view_file/:id', viewSingleFile);
 
 
 
