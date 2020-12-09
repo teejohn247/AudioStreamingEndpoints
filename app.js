@@ -18,7 +18,10 @@ dotenv.config();
 app.use(express.static(path.join(__dirname, 'public copy/')));
 
 app.get('/',(req, res) => {
-    res.render('index.pug');
+     res.status(200).json({
+    status:404,
+    
+})
 });
 
 app.use(logger('dev'));
@@ -45,7 +48,7 @@ connectDb();
 
 app.get('/api/v1', (req, res) => {
     res.json({
-      message: 'Welcome to Audio-Streaming App API'
+      message: 'Welcome to Dev-Connector API'
     });
 });
 
