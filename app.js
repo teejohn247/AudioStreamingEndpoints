@@ -48,7 +48,7 @@ connectDb();
 
 app.get('/api/v1', (req, res) => {
     res.json({
-      message: 'Welcome to Dev-Connector API'
+      message: 'Welcome to API'
     });
 });
 
