@@ -1,7 +1,7 @@
 import Tags from '../model/Tags';
 
 
-const updateTag = async (req, res) => {
+const ViewTag = async (req, res) => {
   try {
     console.log(req.params._id)
     console.log('here')
@@ -15,24 +15,14 @@ const updateTag = async (req, res) => {
             })
             return
         }
-        // if(tag.tag_name == req.body.tag_name){
-        //   res.status(403).json({
-        //     status:403,
-        //     msg:'tag name already exists'
-        // })
-        // return
-
-        // }
+        
         console.log(tag)
-        tag.updateOne({ tag_name: req.body.tag_name, tag_color: req.body.tag_color}, tag).then(
-            () => {
+       
               res.status(200).json({
                 status:200,
-                "tag_name": req.body.tag_name,
-                "tag_color": req.body.tag_color,
+                tag
               });
-            }
-          )     
+             
     }
     catch(err){
         res.status(500).json({
@@ -42,4 +32,4 @@ const updateTag = async (req, res) => {
     }
 };
 
-export default updateTag;
+export default ViewTag;
