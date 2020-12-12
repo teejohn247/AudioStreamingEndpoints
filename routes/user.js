@@ -8,7 +8,10 @@ import superAdminLogin from '../controllers/superAdminLogin';
 import changePassword from '../controllers/changePassword';
 import admin from '../controllers/admin';
 import adminLogin from '../controllers/adminLogin';
-import updateAdmin from '../controllers/updateUser';
+import updateSuperAdmin from '../controllers/updateSuperAdmin';
+
+import viewTag from '../controllers/ViewTag';
+
 import viewAdmin from '../controllers/viewAdmin';
 import viewSingleAdmin from '../controllers/viewSingleAdmin';
 import deleteAdmin from '../controllers/delAdmin';
@@ -80,7 +83,9 @@ router.post('/super_admin/login', superAdminLogin);
 router.post('/admin/signup', [auth, adminAuth], admin);
 router.post('/admin/login', adminLogin);
 router.patch('/super_admin/change_password', auth, changePassword);
-router.patch('/admin/update_admin', auth, updateAdmin);
+// router.patch('/admin/update_admin', auth, updateAdmin);
+router.patch('/admin/update_super_admin',[auth, adminAuth], updateSuperAdmin);
+
 router.get('/admin/view/:id', auth, viewSingleAdmin);
 router.delete('/admin/delete/:id', [auth, adminAuth], deleteAdmin);
 router.post('/admin/create_tags', [auth, adminAuth], create_tags);
@@ -88,6 +93,7 @@ router.patch('/admin/update_tags/:_id', [auth, adminAuth], tags);
 router.get('/admin/view_tags/:page/:limit', [auth, adminAuth], viewTags);
 router.get('/admin/view_admin/:page/:limit', [auth, adminAuth], viewAdmin);
 router.get('/admin/filter_tags', [auth, adminAuth], filterTags);
+router.get('/admin/single_tag/:_id', [auth, adminAuth], viewTag);
 router.get('/admin/filter_admin', [auth, adminAuth], filterAdmin);
 router.delete('/admin/delete_tag/:id', [auth, adminAuth], delTags);
 router.delete('/admin/delete_file/:file_id', [auth, adminAuth], delFile);
