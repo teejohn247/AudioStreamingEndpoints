@@ -29,7 +29,6 @@ const dataSchema = new mongoose.Schema({
         type: String, 
         required: false
     },
-   
 });
 
 const Details = mongoose.model('details', dataSchema);
