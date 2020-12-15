@@ -25,24 +25,15 @@ import details from '../controllers/saveDes';
 import getAudio from '../controllers/getAudio';
 import getAll from '../controllers/listAllUploads';
 import viewSingleFile from '../controllers/viewSingleFile';
-
-
-
-
-
-
-
-
-
-
-
-
-
+import getStreams from '../controllers/getStreams';
 import auth from '../middleware/auth';
-
 import adminAuth from '../middleware/adminAuth';
 import delFile from '../controllers/delFile';
 import editFile from '../controllers/editFile';
+import getSingleStream from '../controllers/getSingleStreams';
+import getAllDownloads from '../controllers/getAllDownloads';
+import getSingleDownloads from '../controllers/getSingleDownloads';
+import download from '../controllers/download';
 
 
 const router = express.Router();
@@ -98,10 +89,14 @@ router.get('/admin/filter_admin', [auth, adminAuth], filterAdmin);
 router.delete('/admin/delete_tag/:id', [auth, adminAuth], delTags);
 router.delete('/admin/delete_file/:file_id', [auth, adminAuth], delFile);
 router.get('/file/:filename', getAudio);
+router.get('/download/:filename', download);
 router.get('/all_files/:page/:limit', getAll);
+router.get('/stream_data', [auth, adminAuth], getStreams);
+router.get('/stream_single_data/:id', [auth, adminAuth], getSingleStream);
+router.get('/all_downloads', [auth, adminAuth], getAllDownloads);
+router.get('/single_download/:id', [auth, adminAuth], getSingleDownloads);
 router.get('/view_file/:id', viewSingleFile);
 router.get('/view_file/:id', viewSingleFile);
 router.patch('/edit_file/:file_id', editFile);
-
 
 export default router;

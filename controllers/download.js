@@ -1,10 +1,9 @@
 import mongoose from 'mongoose';
 import Grid from 'gridfs-stream';
-import Streams from '../model/Streams';
+import Downloads from '../model/Downloads';
 
 
 const mongoURI = "mongodb://teejohn247:Wisdom123.@cluster0-shard-00-00.f53iq.mongodb.net:27017,cluster0-shard-00-01.f53iq.mongodb.net:27017,cluster0-shard-00-02.f53iq.mongodb.net:27017/audio?ssl=true&replicaSet=atlas-tu9bmp-shard-0&authSource=admin&retryWrites=true&w=majority"
-
 
 
 mongoose.connect(mongoURI);
@@ -34,12 +33,12 @@ const getAudio = async (req, res) => {
         }
         const readstream = gfs.createReadStream(file.filename);
 
-        let streams = new Streams({
+        let downloads = new Downloads({
           file_id: file._id,
           date: new Date().toISOString(),
         });
-        console.log(streams);
-        streams.save();
+        console.log(downloads);
+        downloads.save();
        
         return readstream.pipe(res);
        
