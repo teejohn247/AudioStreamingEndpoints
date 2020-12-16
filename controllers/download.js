@@ -31,8 +31,22 @@ const getAudio = async (req, res) => {
             err: 'No file exists'
           });
         }
-        const readstream = gfs.createReadStream(file.filename);
+        // const readstream = gfs.createReadStream(file.filename);
+        // detect the content type and set the appropriate response headers.
+        let mimeType = file.contentType;
+        if (!mimeType) {
+            mimeType = mime.lookup(file.filename);
+        }
+        res.set({
+            'Content-Type': mimeType,
+            'Content-Disposition': 'attachment; filename=' + file.filename
+        });
 
+        const readStream = gfs.createReadStream(file.filename);
+        readStream.on('error', err => {
+            // report stream error
+            console.log(err);
+        });
         let downloads = new Downloads({
           file_id: file._id,
           date: new Date().toISOString(),
@@ -40,7 +54,7 @@ const getAudio = async (req, res) => {
         console.log(downloads);
         downloads.save();
        
-        return readstream.pipe(res);
+        return readStream.pipe(res);
        
     })
       
