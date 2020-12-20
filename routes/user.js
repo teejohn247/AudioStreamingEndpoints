@@ -37,6 +37,8 @@ import getAllDownloads from '../controllers/getAllDownloads';
 import getSingleDownloads from '../controllers/getSingleDownloads';
 import viewSingleSuperAdmin from '../controllers/getSuperAdmin';
 import mostDownloads from '../controllers/mostDownloads';
+import mostRecent from '../controllers/mostRecent';
+
 
 
 import download from '../controllers/download';
@@ -98,10 +100,14 @@ router.get('/admin/filter_admin', [auth, adminAuth], filterAdmin);
 router.delete('/admin/delete_tag/:id', [auth, adminAuth], delTags);
 router.delete('/admin/delete_file/:file_id', [auth, adminAuth], delFile);
 router.get('/file/:filename/:file_id', getAudio);
+
 router.get('/download/:filename/:file_id', download);
+
+
 router.get('/all_files/:page/:limit', getAll);
 router.get('/most_stream', [auth, adminAuth], mostStreams);
 router.get('/most_downloads', [auth, adminAuth], mostDownloads);
+router.get('/most_recent', mostRecent);
 router.get('/stream_data', [auth, adminAuth], getStreams);
 router.get('/stream_single_data/:id', [auth, adminAuth], getSingleStream);
 router.get('/all_downloads', [auth, adminAuth], getAllDownloads);
