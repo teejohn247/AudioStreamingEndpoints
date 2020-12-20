@@ -13,6 +13,8 @@ import updateSuperAdmin from '../controllers/updateSuperAdmin';
 import viewTag from '../controllers/ViewTag';
 
 import viewAdmin from '../controllers/viewAdmin';
+import viewSuperAdmin from '../controllers/viewSuperAdmin';
+
 import viewSingleAdmin from '../controllers/viewSingleAdmin';
 import deleteAdmin from '../controllers/delAdmin';
 import create_tags from '../controllers/tags';
@@ -33,6 +35,8 @@ import editFile from '../controllers/editFile';
 import getSingleStream from '../controllers/getSingleStreams';
 import getAllDownloads from '../controllers/getAllDownloads';
 import getSingleDownloads from '../controllers/getSingleDownloads';
+import viewSingleSuperAdmin from '../controllers/getSuperAdmin';
+
 import download from '../controllers/download';
 
 
@@ -81,8 +85,13 @@ router.get('/admin/view/:id', auth, viewSingleAdmin);
 router.delete('/admin/delete/:id', [auth, adminAuth], deleteAdmin);
 router.post('/admin/create_tags', [auth, adminAuth], create_tags);
 router.patch('/admin/update_tags/:_id', [auth, adminAuth], tags);
+router.get('/admin/get_super_admin/:_id', [auth, adminAuth], viewSingleSuperAdmin);
+
 router.get('/admin/view_tags/:page/:limit', [auth, adminAuth], viewTags);
 router.get('/admin/view_admin/:page/:limit', [auth, adminAuth], viewAdmin);
+
+router.get('/admin/view_super_admin/:page/:limit', [auth, adminAuth], viewSuperAdmin);
+
 router.get('/admin/filter_tags', [auth, adminAuth], filterTags);
 router.get('/admin/single_tag/:_id', [auth, adminAuth], viewTag);
 router.get('/admin/filter_admin', [auth, adminAuth], filterAdmin);
