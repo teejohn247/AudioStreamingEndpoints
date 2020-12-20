@@ -17,6 +17,8 @@ import viewSuperAdmin from '../controllers/viewSuperAdmin';
 
 import viewSingleAdmin from '../controllers/viewSingleAdmin';
 import deleteAdmin from '../controllers/delAdmin';
+import deleteSuperAdmin from '../controllers/delSuperAdmin';
+
 import create_tags from '../controllers/tags';
 import tags from '../controllers/updateTag';
 import viewTags from '../controllers/viewTags';
@@ -88,6 +90,7 @@ router.patch('/admin/update_super_admin',[auth, adminAuth], updateSuperAdmin);
 
 router.get('/admin/view/:id', auth, viewSingleAdmin);
 router.delete('/admin/delete/:id', [auth, adminAuth], deleteAdmin);
+router.delete('/admin/delete_super_admin/:id', [auth, adminAuth], deleteSuperAdmin);
 router.post('/admin/create_tags', [auth, adminAuth], create_tags);
 router.patch('/admin/update_tags/:_id', [auth, adminAuth], tags);
 router.get('/admin/get_super_admin/:_id', [auth, adminAuth], viewSingleSuperAdmin);
@@ -100,6 +103,7 @@ router.get('/admin/filter_admin', [auth, adminAuth], filterAdmin);
 router.delete('/admin/delete_tag/:id', [auth, adminAuth], delTags);
 router.delete('/admin/delete_file/:file_id', [auth, adminAuth], delFile);
 router.get('/file/:filename/:file_id', getAudio);
+
 
 router.get('/download/:filename/:file_id', download);
 
