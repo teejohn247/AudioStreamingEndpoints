@@ -11,6 +11,9 @@ const details = async (req, res) => {
         console.log(title);
         console.log(author);
         console.log(date);
+        console.log(tags);
+        console.log(req.body)
+
   
   
         let data = await Details.find({ file_id: id.toString()});
@@ -22,7 +25,9 @@ const details = async (req, res) => {
           file_id: id,
           files: req.files,
           tags: tags,
-          description:description
+          description:description,
+          number_of_downloads: 0,
+          number_of_streams: 0
         });
         console.log(data);
   
