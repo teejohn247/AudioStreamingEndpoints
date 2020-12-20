@@ -38,8 +38,7 @@ import getSingleDownloads from '../controllers/getSingleDownloads';
 import viewSingleSuperAdmin from '../controllers/getSuperAdmin';
 import mostDownloads from '../controllers/mostDownloads';
 import mostRecent from '../controllers/mostRecent';
-
-
+import changeSuperAdmin from '../controllers/changeSuperPassword';
 
 import download from '../controllers/download';
 import mostStreams from '../controllers/mostStreams';
@@ -82,7 +81,8 @@ router.post('/super_admin/signup', superAdmin);
 router.post('/super_admin/login', superAdminLogin);
 router.post('/admin/signup', [auth, adminAuth], admin);
 router.post('/admin/login', adminLogin);
-router.patch('/super_admin/change_password', auth, changePassword);
+router.patch('/admin/change_password', auth, changePassword);
+router.patch('/super_admin/change_password', [auth, adminAuth], changeSuperAdmin);
 // router.patch('/admin/update_admin', auth, updateAdmin);
 router.patch('/admin/update_super_admin',[auth, adminAuth], updateSuperAdmin);
 
@@ -107,7 +107,7 @@ router.get('/download/:filename/:file_id', download);
 router.get('/all_files/:page/:limit', getAll);
 router.get('/most_stream', [auth, adminAuth], mostStreams);
 router.get('/most_downloads', [auth, adminAuth], mostDownloads);
-router.get('/most_recent', mostRecent);
+router.get('/most_recent', [auth, adminAuth], mostRecent);
 router.get('/stream_data', [auth, adminAuth], getStreams);
 router.get('/stream_single_data/:id', [auth, adminAuth], getSingleStream);
 router.get('/all_downloads', [auth, adminAuth], getAllDownloads);
