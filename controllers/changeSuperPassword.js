@@ -1,10 +1,10 @@
 import bcrypt from 'bcrypt';
-import Admin from '../model/OrdinaryAdmin';
+import Admin from '../model/Admin';
 
 
 
 
-const changePassword = async (req, res) => {
+const changeSuperPassword = async (req, res) => {
   try {
         let { password, new_password } = req.body;
 
@@ -52,7 +52,7 @@ const changePassword = async (req, res) => {
     }
 };
 
-export default changePassword;
+export default changeSuperPassword;
 
 
 

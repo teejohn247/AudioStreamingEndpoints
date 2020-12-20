@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
 import Grid from 'gridfs-stream';
 import Streams from '../model/Streams';
+import Details from '../model/Details';
+
 
 
 const mongoURI = "mongodb://teejohn247:Wisdom123.@cluster0-shard-00-00.f53iq.mongodb.net:27017,cluster0-shard-00-01.f53iq.mongodb.net:27017,cluster0-shard-00-02.f53iq.mongodb.net:27017/audio?ssl=true&replicaSet=atlas-tu9bmp-shard-0&authSource=admin&retryWrites=true&w=majority"
@@ -25,6 +27,20 @@ const getAudio = async (req, res) => {
       const collection = conn.collection('uploads.files'); 
       try{
 
+        const record = await Details.findOne({file_id: req.params.file_id});
+        if(!record){
+            res.status(404).json({
+                status:404,
+                msg:'No file Found'
+            })
+            return
+        }
+      
+        console.log(record)
+
+       
+       let audio;
+        
       collection.findOne({ filename: req.params.filename }, (err, file) => {
         console.log(file)
         if (!file || file.length === 0) {
@@ -38,13 +54,29 @@ const getAudio = async (req, res) => {
           file_id: file._id,
           date: new Date().toISOString(),
         });
+
         console.log(streams);
         streams.save();
-       
-        return readstream.pipe(res);
-       
+        let result = readstream.pipe(res)
+        audio = result;
+        // return readstream.pipe(res);
     })
-      
+
+    await record.updateOne({ number_of_streams: record.number_of_streams + 1}, record)
+    .then((record) => {
+      () => {
+        console.log('success', record)
+      }
+    })
+
+    if(audio !== undefined || audio !== empty){
+      return audio;
+  }else{
+      res.status(404).json({
+          status:404,
+          err:'connection error'
+      })
+  }
 
     }catch(err){
         res.status(500).json({

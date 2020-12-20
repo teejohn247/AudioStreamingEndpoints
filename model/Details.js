@@ -21,14 +21,30 @@ const dataSchema = new mongoose.Schema({
         type: String, 
         required: false,
     },
-    tags: {
-        type: Array, 
-        required: false
-    },
+    tags: [{
+        tag_name: {
+            type: String,
+            required: true,
+        },
+        tag_color: {
+            type: String,
+            required: true,
+        }
+    }],
+    
     description: {
         type: String, 
         required: false
     },
+    number_of_streams: {
+        type: Number, 
+        required: true
+    },
+    number_of_downloads: {
+        type: Number, 
+        required: true
+    },
+    
 });
 
 const Details = mongoose.model('details', dataSchema);
