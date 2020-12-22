@@ -109,15 +109,15 @@ router.get('/download/:filename/:file_id', download);
 
 
 router.get('/all_files/:page/:limit', getAll);
-router.get('/most_stream', [auth, adminAuth], mostStreams);
-router.get('/most_downloads', [auth, adminAuth], mostDownloads);
-router.get('/most_recent', [auth, adminAuth], mostRecent);
+router.get('/most_stream', mostStreams);
+router.get('/most_downloads',  mostDownloads);
+router.get('/most_recent',  mostRecent);
 router.get('/stream_data', [auth, adminAuth], getStreams);
 router.get('/stream_single_data/:id', [auth, adminAuth], getSingleStream);
 router.get('/all_downloads', [auth, adminAuth], getAllDownloads);
 router.get('/single_download/:id', [auth, adminAuth], getSingleDownloads);
 router.get('/view_file/:id', viewSingleFile);
-router.get('/view_file/:id', viewSingleFile);
+// router.get('/view_file/:id', viewSingleFile);
 router.patch('/edit_file/:file_id', editFile);
 
 export default router;

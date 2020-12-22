@@ -36,26 +36,26 @@ const getAudio = async (req, res) => {
             return
         }
       
-        console.log(record)
+        console.log('1',record)
 
        
-       let audio;
+       var audio;
         
       collection.findOne({ filename: req.params.filename }, (err, file) => {
-        console.log(file)
+        console.log('2',file)
         if (!file || file.length === 0) {
           return res.status(404).json({
             err: 'No file exists'
           });
         }
-        const readstream = gfs.createReadStream(file.filename);
+        let readstream = gfs.createReadStream(file.filename);
+
 
         let streams = new Streams({
           file_id: file._id,
           date: new Date().toISOString(),
         });
 
-        console.log(streams);
         streams.save();
         let result = readstream.pipe(res)
         audio = result;
@@ -69,7 +69,8 @@ const getAudio = async (req, res) => {
       }
     })
 
-    if(audio !== undefined || audio !== empty){
+    if(audio != undefined || audio != ''){
+      console.log('audio', audio)
       return audio;
   }else{
       res.status(404).json({
