@@ -23,6 +23,9 @@ import updateAdmin from '../controllers/updateAdmin';
 
 
 import create_tags from '../controllers/tags';
+
+import getTotal from '../controllers/getTotal';
+
 import tags from '../controllers/updateTag';
 import viewTags from '../controllers/viewTags';
 import delTags from '../controllers/delTags';
@@ -90,6 +93,8 @@ router.patch('/admin/change_password', auth, changePassword);
 router.patch('/super_admin/change_password', [auth, adminAuth], changeSuperAdmin);
 router.patch('/admin/update_admin',auth, updateAdmin);
 router.patch('/admin/update_super_admin',[auth, adminAuth], updateSuperAdmin);
+router.get('/admin/total_messages',auth, getTotal);
+
 
 router.get('/admin/view/:id', auth, viewSingleAdmin);
 router.delete('/admin/delete/:id', [auth, adminAuth], deleteAdmin);
@@ -97,7 +102,7 @@ router.delete('/admin/delete_super_admin/:id', [auth, adminAuth], deleteSuperAdm
 router.post('/admin/create_tags', [auth, adminAuth], create_tags);
 router.patch('/admin/update_tags/:_id', [auth, adminAuth], tags);
 router.get('/admin/get_super_admin/:_id', [auth, adminAuth], viewSingleSuperAdmin);
-router.get('/admin/view_tags/:page/:limit', [auth, adminAuth], viewTags);
+router.get('/admin/view_tags/:page/:limit', auth, viewTags);
 router.get('/admin/view_admin/:page/:limit', [auth, adminAuth], viewAdmin);
 router.get('/admin/view_super_admin/:page/:limit', [auth, adminAuth], viewSuperAdmin);
 router.get('/admin/filter_tags', filterTags);
