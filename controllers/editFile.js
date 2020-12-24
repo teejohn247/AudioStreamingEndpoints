@@ -10,14 +10,15 @@ const editFile = async (req, res) => {
             })
             return
         }
-        record.updateOne({ title: req.body.title, tags: req.body.tags, author: req.body.author, description: req.body.description}, record).then(
+        record.updateOne({ title: req.body.title, date: req.body.date, tags: req.body.tags, author: req.body.author, description: req.body.description}, record).then(
             () => {
               res.status(200).json({
                 status:200,
                 "title": req.body.title,
                 "author": req.body.author,
                 "description": req.body.description,
-                "tags": req.body.tags
+                "tags": req.body.tags,
+                "date": req.body.date
               });
             }
           )     
