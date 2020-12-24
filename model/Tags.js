@@ -11,6 +11,11 @@ tag_name: {
 tag_color: {
     type: String,
     required: true
+},
+
+date: {
+    type: String,
+    required: false
 }
 
 })

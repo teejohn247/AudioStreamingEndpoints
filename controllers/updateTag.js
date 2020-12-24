@@ -24,12 +24,13 @@ const updateTag = async (req, res) => {
 
         // }
         console.log(tag)
-        tag.updateOne({ tag_name: req.body.tag_name, tag_color: req.body.tag_color}, tag).then(
+        tag.updateOne({ tag_name: req.body.tag_name, tag_color: req.body.tag_color, date: req.body.date}, tag).then(
             () => {
               res.status(200).json({
                 status:200,
                 "tag_name": req.body.tag_name,
                 "tag_color": req.body.tag_color,
+                "date": req.body.date,
               });
             }
           )     

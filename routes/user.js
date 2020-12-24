@@ -97,11 +97,11 @@ router.get('/admin/get_super_admin/:_id', [auth, adminAuth], viewSingleSuperAdmi
 router.get('/admin/view_tags/:page/:limit', [auth, adminAuth], viewTags);
 router.get('/admin/view_admin/:page/:limit', [auth, adminAuth], viewAdmin);
 router.get('/admin/view_super_admin/:page/:limit', [auth, adminAuth], viewSuperAdmin);
-router.get('/admin/filter_tags', [auth, adminAuth], filterTags);
-router.get('/admin/single_tag/:_id', [auth, adminAuth], viewTag);
+router.get('/admin/filter_tags', filterTags);
+router.get('/admin/single_tag/:_id',auth, viewTag);
 router.get('/admin/filter_admin', [auth, adminAuth], filterAdmin);
 router.delete('/admin/delete_tag/:id', [auth, adminAuth], delTags);
-router.delete('/admin/delete_file/:file_id', [auth, adminAuth], delFile);
+router.delete('/admin/delete_file/:file_id', auth, delFile);
 router.get('/file/:filename/:file_id', getAudio);
 
 
