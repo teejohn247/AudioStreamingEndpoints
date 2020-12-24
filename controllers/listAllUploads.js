@@ -5,7 +5,30 @@ const listAllUploads= async(req, res) => {
     let page = req.params.page;
     let limit = req.params.limit;
     try{
-        const records = await Details.find()
+        let { title, author, date } = req.body;
+
+    
+        console.log('here')
+        console.log(title)
+
+        var filter = {};
+
+
+        if(title){
+            filter.title = title;
+        };
+        
+        if(author){
+            filter.author = author;
+        };
+
+        if(date){
+            filter.date = date;
+        };
+
+        
+    //  const records = await Tags.find(filter)
+        const records = await Details.find(filter)
         .limit(limit * 1)
         .skip((page - 1) * limit)
         .exec();
