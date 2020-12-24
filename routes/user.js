@@ -18,6 +18,9 @@ import viewSuperAdmin from '../controllers/viewSuperAdmin';
 import viewSingleAdmin from '../controllers/viewSingleAdmin';
 import deleteAdmin from '../controllers/delAdmin';
 import deleteSuperAdmin from '../controllers/delSuperAdmin';
+import updateAdmin from '../controllers/updateAdmin';
+
+
 
 import create_tags from '../controllers/tags';
 import tags from '../controllers/updateTag';
@@ -85,7 +88,7 @@ router.post('/admin/signup', [auth, adminAuth], admin);
 router.post('/admin/login', adminLogin);
 router.patch('/admin/change_password', auth, changePassword);
 router.patch('/super_admin/change_password', [auth, adminAuth], changeSuperAdmin);
-// router.patch('/admin/update_admin', auth, updateAdmin);
+router.patch('/admin/update_admin',auth, updateAdmin);
 router.patch('/admin/update_super_admin',[auth, adminAuth], updateSuperAdmin);
 
 router.get('/admin/view/:id', auth, viewSingleAdmin);
