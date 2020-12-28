@@ -11,6 +11,8 @@ const listAllUploads= async(req, res) => {
         console.log('here')
         console.log(title)
 
+        var record = await Details.find()
+
         var filter = {};
 
 
@@ -25,6 +27,18 @@ const listAllUploads= async(req, res) => {
         if(date){
             filter.date = date;
         };
+
+        // if(tag_name){
+        //   let ab = [];
+        //   record.filter((a,i) => 
+        //   console.log(a.tags[i].tag_name)
+        //   )
+
+        //   console.log('test', ab)
+        //   return;
+
+        //     // filter.tag_name = tag_name;
+        // };
 
         
     //  const records = await Tags.find(filter)

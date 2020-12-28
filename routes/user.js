@@ -102,7 +102,7 @@ router.delete('/admin/delete_super_admin/:id', [auth, adminAuth], deleteSuperAdm
 router.post('/admin/create_tags', [auth, adminAuth], create_tags);
 router.patch('/admin/update_tags/:_id', [auth, adminAuth], tags);
 router.get('/admin/get_super_admin/:_id', [auth, adminAuth], viewSingleSuperAdmin);
-router.get('/admin/view_tags/:page/:limit', auth, viewTags);
+router.get('/admin/view_tags/:page/:limit', viewTags);
 router.get('/admin/view_admin/:page/:limit', [auth, adminAuth], viewAdmin);
 router.get('/admin/view_super_admin/:page/:limit', [auth, adminAuth], viewSuperAdmin);
 router.get('/admin/filter_tags', filterTags);
