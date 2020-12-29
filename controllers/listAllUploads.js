@@ -5,7 +5,8 @@ const listAllUploads= async(req, res) => {
     let page = req.params.page;
     let limit = req.params.limit;
     try{
-        let { title, author, date } = req.body;
+        // let { title, author, date } = req.body;
+        let {title, author, date} = req.query
 
     
         console.log('here')

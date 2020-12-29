@@ -81,7 +81,7 @@ const storage = new GridFsStorage({
       });
     }
   });
-  const upload = multer({ storage });
+const upload = multer({ storage });
 
 
 router.post('/upload_file', upload.any(), details)
@@ -94,8 +94,6 @@ router.patch('/super_admin/change_password', [auth, adminAuth], changeSuperAdmin
 router.patch('/admin/update_admin',auth, updateAdmin);
 router.patch('/admin/update_super_admin',[auth, adminAuth], updateSuperAdmin);
 router.get('/admin/total_messages',auth, getTotal);
-
-
 router.get('/admin/view/:id', auth, viewSingleAdmin);
 router.delete('/admin/delete/:id', [auth, adminAuth], deleteAdmin);
 router.delete('/admin/delete_super_admin/:id', [auth, adminAuth], deleteSuperAdmin);
@@ -127,5 +125,6 @@ router.get('/single_download/:id', [auth, adminAuth], getSingleDownloads);
 router.get('/view_file/:id', viewSingleFile);
 // router.get('/view_file/:id', viewSingleFile);
 router.patch('/edit_file/:file_id', editFile);
+
 
 export default router;
