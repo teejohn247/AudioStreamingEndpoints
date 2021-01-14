@@ -47,13 +47,18 @@ import viewSingleSuperAdmin from '../controllers/getSuperAdmin';
 import mostDownloads from '../controllers/mostDownloads';
 import mostRecent from '../controllers/mostRecent';
 import changeSuperAdmin from '../controllers/changeSuperPassword';
+import dotenv from 'dotenv';
 
 import download from '../controllers/download';
 import mostStreams from '../controllers/mostStreams';
 
+dotenv.config();
+ 
+// const url = process.env.MONGO_URL;
+// "mongodb://teejohn247:Wisdom123.@cluster0-shard-00-00.f53iq.mongodb.net:27017,cluster0-shard-00-01.f53iq.mongodb.net:27017,cluster0-shard-00-02.f53iq.mongodb.net:27017/audio?ssl=true&replicaSet=atlas-tu9bmp-shard-0&authSource=admin&retryWrites=true&w=majority"
 
 const router = express.Router();
-const mongoURI = "mongodb://teejohn247:Wisdom123.@cluster0-shard-00-00.f53iq.mongodb.net:27017,cluster0-shard-00-01.f53iq.mongodb.net:27017,cluster0-shard-00-02.f53iq.mongodb.net:27017/audio?ssl=true&replicaSet=atlas-tu9bmp-shard-0&authSource=admin&retryWrites=true&w=majority"
+const mongoURI = process.env.MONGO_URL;
 
 const storage = new GridFsStorage({
     url: mongoURI,
