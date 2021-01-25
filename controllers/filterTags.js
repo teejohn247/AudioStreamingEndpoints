@@ -19,22 +19,14 @@ const filterTags = async(req, res) => {
         if(tag_color){
             filter.tag_color = tag_color;
         };
-
-       
-
-        
        const records = await Tags.find(filter)
         // .limit(limit * 1)
         // .skip((page - 1) * limit)
         // .exec();
         console.log(records)
-
         console.log('here2')
-
         // const count = await AdminRecords.find({"email": email, "phone_number": phone_number, "name": name}).countDocuments();
         // console.log(count)
-
-
         if(!records){
             res.status(404).json({
                 status:404,

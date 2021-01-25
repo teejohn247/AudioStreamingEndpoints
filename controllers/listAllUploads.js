@@ -6,11 +6,11 @@ const listAllUploads= async(req, res) => {
     let limit = req.params.limit;
     try{
         // let { title, author, date } = req.body;
-        let {title, author, date} = req.query
+        let {title, author, date, tag_name} = req.query
 
     
         console.log('here')
-        console.log(title)
+        console.log(tag_name)
 
         var record = await Details.find()
 
@@ -18,32 +18,25 @@ const listAllUploads= async(req, res) => {
 
 
         if(title){
-            filter.title = title;
+            const s = title
+            const regex = new RegExp(s, 'i') // i for case insensitive
+            filter.title = {$regex: regex};
         };
         
         if(author){
-            filter.author = author;
+            const s = author
+            const regex = new RegExp(s, 'i') // i for case insensitive
+            filter.author = {$regex: regex}
         };
 
         if(date){
             filter.date = date;
         };
 
-        // if(tag_name){
-        //   let ab = [];
-        //   record.filter((a,i) => 
-        //   console.log(a.tags[i].tag_name)
-        //   )
-
-        //   console.log('test', ab)
-        //   return;
-
-        //     // filter.tag_name = tag_name;
-        // };
-
-        
+       
+   
     //  const records = await Tags.find(filter)
-        const records = await Details.find(filter)
+         const records = await Details.find(filter)
         .limit(limit * 1)
         .skip((page - 1) * limit)
         .exec();
@@ -58,6 +51,18 @@ const listAllUploads= async(req, res) => {
                 error:'no record available'
             })
         }
+
+        if(tag_name){
+            const result = await Details.find(
+                    { tags : { $elemMatch : { "tag_name" : `${tag_name}`} }, }
+                );
+              return res.status(200).json({
+                status:200,
+                result,
+                totalPages: Math.ceil(count / limit),
+                currentPage: page
+            })
+            };
         
         res.status(200).json({
             status:200,

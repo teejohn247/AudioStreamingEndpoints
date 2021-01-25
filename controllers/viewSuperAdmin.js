@@ -20,7 +20,6 @@ const viewSuperAdmin = async(req, res) => {
                 error:'no record available'
             })
         }
-        
         res.status(200).json({
             status:200,
             adminrecords,
