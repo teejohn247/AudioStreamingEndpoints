@@ -84,7 +84,7 @@ const getAudio = async (req, res) => {
         readStream.on('data', function (buff) {
           start += buff.length;
           if (start >= end) {
-            readStream.close();
+            // readStream.close();
             res.end();
           } else {
             res.write(buff);
