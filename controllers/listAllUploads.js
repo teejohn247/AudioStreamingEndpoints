@@ -54,7 +54,7 @@ const listAllUploads= async(req, res) => {
 
         if(tag_name){
             const result = await Details.find(
-                    { tags : { $elemMatch : { "tag_name" : `${tag_name}`} }, }
+                    { tags : { $elemMatch : { "tag_name" : `${tag_name}`} } }, filter
                 );
               return res.status(200).json({
                 status:200,
